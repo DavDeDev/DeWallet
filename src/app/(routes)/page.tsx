@@ -1,4 +1,3 @@
-import { TailwindIndicator } from '@/components/tailwind-indicator';
 import Image from 'next/image';
 
 export default function Home() {
