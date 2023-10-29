@@ -25,11 +25,11 @@ const DrawerNav = () => {
           );
         })}
       </ul>
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-sm justify-center items-center">
         <ModeToggle />
         <div className=" flex flex-row gap-sm">
           <Menu />
-          <p className="max-md:hidden">Others</p>M
+          <p className="max-md:hidden">Others</p>
         </div>
       </div>
     </nav>
