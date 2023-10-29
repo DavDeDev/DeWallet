@@ -40,12 +40,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog",
-      "defaultType": "feat",
-      "delete": {
-        "description": "A new delete",
-        "title": "delete"
-      }
+      "path": "./node_modules/cz-conventional-changelog"
     }
   },
   "husky": {
