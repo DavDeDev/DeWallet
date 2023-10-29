@@ -1,6 +1,7 @@
 import { drawerNavLinks } from '@/constants';
 import { Menu } from 'lucide-react';
 import Link from 'next/link';
+import { ModeToggle } from '../Mode-Toggle';
 
 const DrawerNav = () => {
   return (
@@ -12,18 +13,24 @@ const DrawerNav = () => {
           const Icon = link.img;
           return (
             <li key={link.label}>
-              <Link href={link.route} className="flex gap-sm">
+              <Link
+                href={link.route}
+                className="flex gap-sm justify-center items-center"
+              >
                 {' '}
                 <Icon />
-                <p className="max-md:hidden">{link.label}</p>
+                <p className="w-full max-md:hidden">{link.label}</p>
               </Link>
             </li>
           );
         })}
       </ul>
-      <div className=" flex flex-row gap-sm">
-        <Menu />
-        <p className="max-md:hidden">Others</p>
+      <div className="flex flex-col">
+        <ModeToggle />
+        <div className=" flex flex-row gap-sm">
+          <Menu />
+          <p className="max-md:hidden">Others</p>M
+        </div>
       </div>
     </nav>
   );

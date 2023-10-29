@@ -1,4 +1,4 @@
-import DrawerNav from '@/components/Drawer-nav';
+import DrawerNav from '@/components/shared/Drawer-nav';
 
 export default function Home() {
   return (
