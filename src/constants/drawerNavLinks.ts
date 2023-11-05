@@ -21,20 +21,5 @@ export const drawerNavLinks: IDrawerNavLink[] = [
     img: Wallet,
     route: '/accounts',
     label: 'Accounts'
-  },
-  {
-    img: LayoutDashboard,
-    route: '/',
-    label: 'Dashboard'
-  },
-  {
-    img: LayoutDashboard,
-    route: '/',
-    label: 'Dashboard'
-  },
-  {
-    img: Wallet,
-    route: '/accounts',
-    label: 'Accounts'
   }
 ];
