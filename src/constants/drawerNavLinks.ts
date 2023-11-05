@@ -1,4 +1,9 @@
-import { LayoutDashboard, LucideIcon, Wallet } from 'lucide-react';
+import {
+  ArrowLeftRight,
+  LayoutDashboard,
+  LucideIcon,
+  Wallet
+} from 'lucide-react';
 
 interface IDrawerNavLink {
   img: LucideIcon;
@@ -23,9 +28,9 @@ export const drawerNavLinks: IDrawerNavLink[] = [
     label: 'Accounts'
   },
   {
-    img: LayoutDashboard,
-    route: '/',
-    label: 'Dashboard'
+    img: ArrowLeftRight,
+    route: '/transactions',
+    label: 'Transactions'
   },
   {
     img: LayoutDashboard,
