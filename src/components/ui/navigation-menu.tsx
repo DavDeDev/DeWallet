@@ -24,7 +24,7 @@ const NavigationMenu = React.forwardRef<
   <NavigationMenuPrimitive.Root
     ref={ref}
     className={cn(
-      'relative z-10 flex max-w-full flex-1 items-center justify-center',
+      'relative z-10 flex max-w-max flex-1 items-start justify-center',
       className
     )}
     {...props}
@@ -49,7 +49,7 @@ const NavigationMenuList = React.forwardRef<
   <NavigationMenuPrimitive.List
     ref={ref}
     className={cn(
-      'grow group flex bg-red-500 list-none  items-center justify-center',
+      'group flex flex-1 list-none items-center justify-center space-y-1',
       props.orientation === 'vertical' && 'flex-col',
       className
     )}
@@ -61,7 +61,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
-  'group grow inline-flex h-10 w-full items-center justify-start gap-2 rounded-md bg-background px-4 py-2 font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50'
+  'group w-full inline-flex gap-2 h-10 items-center justify-start rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50'
 );
 
 const NavigationMenuTrigger = React.forwardRef<
@@ -89,7 +89,7 @@ const NavigationMenuContent = React.forwardRef<
   <NavigationMenuPrimitive.Content
     ref={ref}
     className={cn(
-      'right-0 top-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto ',
+      'w-full right-0 top-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto ',
       className
     )}
     {...props}
