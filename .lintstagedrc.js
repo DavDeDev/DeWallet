@@ -3,7 +3,7 @@ const path = require('path')
 const buildTscCommand = (filenames) =>
   `tsc --noEmit ${filenames
     .map((f) => path.relative(process.cwd(), f))
-    .join(' --file ')}`
+    .join(' ')}`
  
 const buildEslintCommand = (filenames) =>
   `next lint --no-cache --fix --file ${filenames
