@@ -1,17 +1,19 @@
-const path = require('path')
+const path = require('path');
 
-const buildTscCommand = (filenames) =>
+const buildTscCommand = filenames =>
   `tsc --noEmit ${filenames
-    .map((f) => path.relative(process.cwd(), f))
-    .join(' ')}`
- 
-const buildEslintCommand = (filenames) =>
+    .map(f => path.relative(process.cwd(), f))
+    .join(' ')}`;
+
+const prettierCommand = filenames => ` bun prettier -w ${filenames.join(' ')}`;
+
+const buildEslintCommand = filenames =>
   `next lint --no-cache --fix --file ${filenames
-    .map((f) => path.relative(process.cwd(), f))
-    .join(' --file ')}`
- 
+    .map(f => path.relative(process.cwd(), f))
+    .join(' --file ')}`;
+
 module.exports = {
   '*.(ts|tsx)': [buildTscCommand],
-  '*.{js,jsx,ts,tsx}': [buildEslintCommand],
+  '*.{js,jsx,ts,tsx}': [prettierCommand, buildEslintCommand],
   '*.(md|json)': filenames => `bun prettier --write ${filenames.join(' ')}`
-}
+};
