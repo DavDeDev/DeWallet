@@ -17,7 +17,7 @@ const DrawerNav = () => {
   const pathname = usePathname();
 
   return (
-    <aside className="h-full w-fit fixed top-0 left-0 border-r flex flex-col py-10">
+    <aside className="h-screen fixed w-fit top-0 left-0 border-r flex flex-col py-10">
       <Link href={'/'} className="bg-slate-500 border w-full h-fit flex-none">
         <div className="max-md:hidden">LongLogo</div>
         <div className="hidden max-md:block">L</div>
@@ -54,7 +54,7 @@ const DrawerNav = () => {
       <div className="flex-none bg-green-500 w-full flex flex-col gap-sm justify-center items-center md:gap-md md:flex-row h-fit">
         <ModeToggle />
 
-        <Menu />
+        <Menu className="cursor-pointer" />
       </div>
     </aside>
   );
