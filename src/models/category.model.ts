@@ -1,5 +1,5 @@
 import { LucideIcon } from 'lucide-react';
-import mongoose, { Schema, Document, Types } from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
 
 export enum categoryNatures {
   WANT = 'W',
@@ -13,12 +13,12 @@ interface ICategory extends Document {
   name: string;
   description?: string;
   nature: categoryNatures;
-  icon: LucideIcon;
-  level: number;
-  subCategories: Types.ObjectId[];
+  icon: string | LucideIcon;
+  depth: number;
+  subCategories: ICategory[];
 }
 
-const categorySchema = new Schema<ICategory>({
+const categorySchema: Schema<ICategory> = new Schema<ICategory>({
   name: {
     type: String,
     trim: true,
@@ -42,19 +42,20 @@ const categorySchema = new Schema<ICategory>({
     type: String,
     required: [true, 'Category icon is required']
   },
-  level: {
+  depth: {
     type: Number,
     max: [2, 'Category level cannot exceed 2'],
     min: [0, 'Category level cannot be less than 0'],
     default: 0,
     required: [true, 'Category level is required']
-  },
-  subCategories: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Category'
-    }
-  ]
+  }
+});
+
+categorySchema.add({
+  subCategories: {
+    type: [categorySchema],
+    default: []
+  }
 });
 
 const Category =
