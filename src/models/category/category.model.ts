@@ -1,12 +1,13 @@
 import { categoryNatures } from '@/constants/category';
 import mongoose, { Schema, Document } from 'mongoose';
+import { categoryIconAlias } from '@/constants/category';
 
 // https://mongoosejs.com/docs/typescript/subdocuments.html#subdocument-arrays
 interface ICategory extends Document {
   name: string;
   description?: string;
   nature: categoryNatures;
-  icon: string;
+  icon: Parameters<typeof categoryIconAlias.get>[0];
   depth: number;
   subCategories: ICategory[];
 }
@@ -33,7 +34,8 @@ const categorySchema: Schema<ICategory> = new Schema<ICategory>({
   },
   icon: {
     type: String,
-    required: [true, 'Category icon is required']
+    required: [true, 'Category icon is required'],
+    enum: Array.from(categoryIconAlias.keys())
   },
   depth: {
     type: Number,

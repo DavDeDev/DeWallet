@@ -11,7 +11,7 @@ export enum categoryNatures {
  * @description Maps category icon name to its corresponding LucideIcon component
  * @type {Map<categoryNatures, LucideIcon>}
  */
-export const categoryIconAlias: Map<string, LucideIcon> = new Map<
+export const categoryIconAlias: ReadonlyMap<string, LucideIcon> = new Map<
   string,
   LucideIcon
 >([
