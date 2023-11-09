@@ -1,19 +1,12 @@
-import { LucideIcon } from 'lucide-react';
+import { categoryNatures } from '@/constants/category';
 import mongoose, { Schema, Document } from 'mongoose';
-
-export enum categoryNatures {
-  WANT = 'W',
-  MUST = 'M',
-  NEED = 'N',
-  AVOIDABLE = 'A'
-}
 
 // https://mongoosejs.com/docs/typescript/subdocuments.html#subdocument-arrays
 interface ICategory extends Document {
   name: string;
   description?: string;
   nature: categoryNatures;
-  icon: string | LucideIcon;
+  icon: string;
   depth: number;
   subCategories: ICategory[];
 }
