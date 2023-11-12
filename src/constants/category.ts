@@ -1,11 +1,16 @@
 import { LucideIcon, Briefcase, Apple } from 'lucide-react';
 
-export enum categoryNatures {
-  WANT = 'W',
-  MUST = 'M',
-  NEED = 'N',
-  AVOIDABLE = 'A'
-}
+const CATEGORY_NATURES = ['W', 'M', 'N', 'A'] as const;
+
+export const CATEGORY_NATURES_MAP: ReadonlyMap<
+  (typeof CATEGORY_NATURES)[number],
+  string
+> = new Map([
+  ['W', 'Wants'],
+  ['M', 'Musts'],
+  ['N', 'Needs'],
+  ['A', 'Avoidables']
+]);
 
 /**
  * @description Maps category icon name to its corresponding LucideIcon component

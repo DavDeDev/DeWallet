@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <DrawerNav />
-      <Button className="float-right">Add Category</Button>
+      <Button className="z-50">Add Category</Button>
     </>
   );
 }

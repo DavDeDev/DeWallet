@@ -1,11 +1,11 @@
 import DrawerNav from '@/components/shared/Drawer-nav';
-import { Button } from '@/components/ui/button';
+import CategoriesList from './components/categories-list';
 
 export default function Home() {
   return (
     <>
       <DrawerNav />
-      <Button className="float-right">Add Category</Button>
+      <CategoriesList />
     </>
   );
 }

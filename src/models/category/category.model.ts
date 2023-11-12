@@ -1,12 +1,14 @@
-import { categoryNatures } from '@/constants/category';
-import mongoose, { Schema, Document } from 'mongoose';
+import { CATEGORY_NATURES_MAP } from '@/constants/category';
+import mongoose, { Schema, Document, InferSchemaType } from 'mongoose';
 import { categoryIconAlias } from '@/constants/category';
 
 // https://mongoosejs.com/docs/typescript/subdocuments.html#subdocument-arrays
-interface ICategory extends Document {
+export interface ICategory extends Document {
   name: string;
   description?: string;
-  nature: categoryNatures;
+  nature: typeof CATEGORY_NATURES_MAP extends ReadonlyMap<infer K, any>
+    ? K
+    : never;
   icon: Parameters<typeof categoryIconAlias.get>[0];
   depth: number;
   subCategories: ICategory[];
@@ -30,7 +32,7 @@ const categorySchema: Schema<ICategory> = new Schema<ICategory>({
   nature: {
     type: String,
     required: [true, 'Category nature is required'],
-    enum: Object.values(categoryNatures) as string[]
+    enum: Array.from(CATEGORY_NATURES_MAP.keys())
   },
   icon: {
     type: String,
@@ -52,6 +54,9 @@ categorySchema.add({
     default: []
   }
 });
+
+// https://mongoosejs.com/docs/typescript/schemas.html#automatic-type-inference
+export type TCategory = InferSchemaType<typeof categorySchema>;
 
 const Category =
   mongoose.models.Category || mongoose.model('Category', categorySchema);

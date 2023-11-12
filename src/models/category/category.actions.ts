@@ -1,38 +1,42 @@
 'use server';
 import { connectToDB } from '@/lib/database';
-import Category, { categoryNatures } from './category.model';
+import Category, { TCategory } from './category.model';
 
-interface Params {
-  name: string;
-  description?: string;
-  nature: categoryNatures;
-  icon: string;
-  level: number;
-  // subCategories?: Types.ObjectId[],
-}
+import { categoryData } from '@/data/categories';
 
-export async function createCategory(
-  { name, description, nature, icon, level }: Params = {
-    name: 'twtw',
-    nature: categoryNatures.WANT,
-    icon: 'test',
-    level: 1
-    // subCategories: []
-  }
-): Promise<void> {
+export async function createCategory({
+  name,
+  description = 'not passed',
+  nature,
+  icon,
+  depth
+}: TCategory): Promise<void> {
   try {
     await connectToDB();
 
-    const createdCategory = await Category.create({
+    const createdCategory: TCategory = await Category.create({
       name,
       description,
       nature,
       icon,
-      level
+      depth
     });
     console.log(createdCategory);
     // revalidatePath(path);
   } catch (error: any) {
     throw new Error(`Failed to create category: ${error.message}`);
+  }
+}
+
+export async function fetchCategories(): Promise<TCategory[]> {
+  try {
+    await connectToDB();
+
+    // const categories : TCategory[] = await Category.find();
+    // return categories;
+    console.log('fetch categories called');
+    return categoryData;
+  } catch (error: any) {
+    throw new Error(`Failed to get categories: ${error.message}`);
   }
 }

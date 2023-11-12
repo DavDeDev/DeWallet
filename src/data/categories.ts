@@ -1,108 +1,104 @@
-[
-  {
-    name: 'Essential Expenses',
-    description: 'Expenses that are necessary for basic living.',
-    nature: 'W',
-    icon: 'Dashboard',
+import Category, { TCategory } from '@/models/category/category.model';
+
+export const categoryData: TCategory[] = [
+  new Category({
+    name: 'Root',
+    description: 'Root category',
+    nature: 'N',
+    icon: 'Briefcase',
+    depth: 0,
     subCategories: [
       {
-        name: 'Housing',
-        nature: 'N',
-        icon: 'Dashboard',
+        name: 'Wants',
+        description: 'Wants category',
+        nature: 'W',
+        icon: 'Apple',
+        depth: 1,
         subCategories: [
           {
-            name: 'Rent',
-            nature: 'N',
-            icon: 'Dashboard',
-            subCategories: [],
-            depth: 2
-          },
-          {
-            name: 'Mortgage',
-            nature: 'N',
-            icon: 'Dashboard',
-            subCategories: [],
-            depth: 2
+            name: 'Sub wants',
+            description: 'Sub wants category',
+            nature: 'W',
+            icon: 'Apple',
+            depth: 2,
+            subCategories: []
           }
-        ],
-        depth: 1
+        ]
       },
       {
-        name: 'Utilities',
+        name: 'Musts',
+        description: 'Musts category',
+        nature: 'M',
+        icon: 'Apple',
+        depth: 1,
+        subCategories: []
+      },
+      {
+        name: 'Needs',
+        description: 'Needs category',
         nature: 'N',
-        icon: 'Dashboard',
-        subCategories: [
-          {
-            name: 'Electricity',
-            nature: 'N',
-            icon: 'Dashboard',
-            subCategories: [],
-            depth: 2
-          },
-          {
-            name: 'Water',
-            nature: 'N',
-            icon: 'Dashboard',
-            subCategories: [],
-            depth: 2
-          }
-        ],
-        depth: 1
+        icon: 'Apple',
+        depth: 1,
+        subCategories: []
+      },
+      {
+        name: 'Avoidables',
+        description: 'Avoidables category',
+        nature: 'A',
+        icon: 'Apple',
+        depth: 1,
+        subCategories: []
       }
-    ],
-    depth: 0
-  },
-  {
-    name: 'Discretionary Expenses',
-    description: 'Expenses that are wanted but not essential for survival.',
-    nature: 'W',
-    icon: 'Dashboard',
+    ]
+  }),
+  new Category({
+    name: 'Root',
+    description: 'Root category',
+    nature: 'N',
+    icon: 'Briefcase',
+    depth: 0,
     subCategories: [
       {
-        name: 'Entertainment',
+        name: 'Wants',
+        description: 'Wants category',
         nature: 'W',
-        icon: 'Dashboard',
+        icon: 'Apple',
+        depth: 1,
         subCategories: [
           {
-            name: 'Movies',
+            name: 'Sub wants',
+            description: 'Sub wants category',
             nature: 'W',
-            icon: 'Dashboard',
-            subCategories: [],
-            depth: 2
-          },
-          {
-            name: 'Concerts',
-            nature: 'W',
-            icon: 'Dashboard',
-            subCategories: [],
-            depth: 2
+            icon: 'Apple',
+            depth: 2,
+            subCategories: []
           }
-        ],
-        depth: 1
+        ]
       },
       {
-        name: 'Dining Out',
-        nature: 'W',
-        icon: 'Dashboard',
-        subCategories: [
-          {
-            name: 'Restaurants',
-            nature: 'W',
-            icon: 'Dashboard',
-            subCategories: [],
-            depth: 2
-          },
-          {
-            name: 'Fast Food',
-            nature: 'W',
-            icon: 'Dashboard',
-            subCategories: [],
-            depth: 2
-          }
-        ],
-        depth: 1
+        name: 'Musts',
+        description: 'Musts category',
+        nature: 'M',
+        icon: 'Apple',
+        depth: 1,
+        subCategories: []
+      },
+      {
+        name: 'Needs',
+        description: 'Needs category',
+        nature: 'N',
+        icon: 'Apple',
+        depth: 1,
+        subCategories: []
+      },
+      {
+        name: 'Avoidables',
+        description: 'Avoidables category',
+        nature: 'A',
+        icon: 'Apple',
+        depth: 1,
+        subCategories: []
       }
-    ],
-    depth: 0
-  }
+    ]
+  })
 ];
