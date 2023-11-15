@@ -26,5 +26,10 @@ export const drawerNavLinks: IDrawerNavLink[] = [
     img: Layers3,
     route: '/categories',
     label: 'Categories'
+  },
+  {
+    img: Layers3,
+    route: '/transactions',
+    label: 'Transactions'
   }
 ];

@@ -1,12 +1,12 @@
 'use server';
 import { connectToDB } from '@/lib/database';
-import Category, { TCategory } from './category.model';
+import { Category, TCategory } from './category.model';
 
 import { categoryData } from '@/data/categories';
 
 export async function createCategory({
   name,
-  description = 'not passed',
+  description = undefined,
   nature,
   icon,
   depth

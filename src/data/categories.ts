@@ -1,4 +1,4 @@
-import Category, { TCategory } from '@/models/category/category.model';
+import { Category, TCategory } from '@/models/category/category.model';
 
 export const categoryData: TCategory[] = [
   new Category({

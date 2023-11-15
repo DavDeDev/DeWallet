@@ -3,7 +3,7 @@ import mongoose, { Schema, Document, InferSchemaType } from 'mongoose';
 import { categoryIconAlias } from '@/constants/category';
 
 // https://mongoosejs.com/docs/typescript/subdocuments.html#subdocument-arrays
-export interface ICategory extends Document {
+interface ICategory extends Document {
   name: string;
   description?: string;
   nature: typeof CATEGORY_NATURES_MAP extends ReadonlyMap<infer K, any>
@@ -61,4 +61,4 @@ export type TCategory = InferSchemaType<typeof categorySchema>;
 const Category =
   mongoose.models.Category || mongoose.model('Category', categorySchema);
 
-export default Category;
+export { Category };
