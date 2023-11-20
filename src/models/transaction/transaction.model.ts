@@ -52,6 +52,6 @@ export type TTransaction = InferSchemaType<typeof transactionSchema>;
 
 const Transaction =
   mongoose.models.Transaction ||
-  mongoose.model('Transaction', transactionSchema);
+  mongoose.model('Transaction', transactionSchema, 'transactions');
 
 export { Transaction };

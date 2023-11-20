@@ -1,15 +1,14 @@
-import { CATEGORY_NATURES_MAP } from '@/constants/category';
+import { CATEGORY_NATURES_ENUM } from '@/constants/category';
 import mongoose, { Schema, Document, InferSchemaType } from 'mongoose';
-import { categoryIconAlias } from '@/constants/category';
+import { CATEGORY_ICONS_ALIASES, CATEGORY_COLORS } from '@/constants/category';
 
 // https://mongoosejs.com/docs/typescript/subdocuments.html#subdocument-arrays
 interface ICategory extends Document {
   name: string;
   description?: string;
-  nature: typeof CATEGORY_NATURES_MAP extends ReadonlyMap<infer K, any>
-    ? K
-    : never;
-  icon: Parameters<typeof categoryIconAlias.get>[0];
+  nature: `${CATEGORY_NATURES_ENUM}`;
+  icon: Parameters<typeof CATEGORY_ICONS_ALIASES.get>[0];
+  color: (typeof CATEGORY_COLORS)[number];
   depth: number;
   subCategories: ICategory[];
 }
@@ -32,12 +31,17 @@ const categorySchema: Schema<ICategory> = new Schema<ICategory>({
   nature: {
     type: String,
     required: [true, 'Category nature is required'],
-    enum: Array.from(CATEGORY_NATURES_MAP.keys())
+    enum: Object.values(CATEGORY_NATURES_ENUM) as `${CATEGORY_NATURES_ENUM}`[]
   },
   icon: {
     type: String,
     required: [true, 'Category icon is required'],
-    enum: Array.from(categoryIconAlias.keys())
+    enum: Array.from(CATEGORY_ICONS_ALIASES.keys())
+  },
+  color: {
+    type: String,
+    required: [true, 'Category color is required'],
+    enum: CATEGORY_COLORS
   },
   depth: {
     type: Number,
@@ -59,6 +63,7 @@ categorySchema.add({
 export type TCategory = InferSchemaType<typeof categorySchema>;
 
 const Category =
-  mongoose.models.Category || mongoose.model('Category', categorySchema);
+  mongoose.models.Category ||
+  mongoose.model('Category', categorySchema, 'categories');
 
 export { Category };
