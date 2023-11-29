@@ -1,0 +1,11 @@
+node_modules/
+.git*
+.next
+.lintstagedrc.js
+.prettier*
+.husky
+Dockerfile
+.dockerignore
+npm-debug.log
+*.md
+docker

@@ -1,0 +1,12 @@
+version: '3'
+
+name: dewallet-development
+services:
+  DeWallet-app:
+    container_name: development-fullstack
+    build:
+      context: ../../
+      dockerfile: docker/development/Dockerfile
+    image: dewallet-app-development
+    ports:
+      - '3001:3000'

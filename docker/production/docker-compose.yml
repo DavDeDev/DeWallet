@@ -1,0 +1,12 @@
+version: '3'
+
+name: dewallet-production
+services:
+  DeWallet-app:
+    container_name: production-fullstack
+    build:
+      context: ../../
+      dockerfile: docker/production/Dockerfile
+    image: dewallet-app-production
+    ports:
+      - '3000:3000'
