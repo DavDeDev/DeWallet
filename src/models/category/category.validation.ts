@@ -13,14 +13,15 @@ const CategoryValidation = z.object({
   description: z.string().max(200, { message: 'Maximum 200 characters.' }),
   nature: z
     .nativeEnum(CATEGORY_NATURES_ENUM)
-    .default(CATEGORY_NATURES_ENUM.needs),
+    .default(CATEGORY_NATURES_ENUM.Needs),
   icon: z
     .string()
     .refine(
-      value => Array.from(CATEGORY_ICONS_ALIASES.keys()).includes(value),
+      (value: string) =>
+        Array.from(CATEGORY_ICONS_ALIASES.keys()).includes(value),
       { message: 'Invalid icon.' }
     ),
-  color: z.string().refine(value => CATEGORY_COLORS.includes(value), {
+  color: z.string().refine((value: string) => CATEGORY_COLORS.includes(value), {
     message: 'Invalid color.'
   }),
   depth: z
